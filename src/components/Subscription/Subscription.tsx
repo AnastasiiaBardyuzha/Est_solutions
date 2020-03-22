@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
   Redirect,
@@ -21,7 +21,7 @@ type Props = StateProps;
 
 export const SubscriptionTemplate: FC<Props> = ({ isLogged }) => (
   <>
-    <Router>
+    <Router basename="/Est_solutions">
       <Nav />
       <main className="main">
         <Switch>
