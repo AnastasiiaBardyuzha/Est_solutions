@@ -27,8 +27,6 @@ const initialState = {
   newsList: [],
   enteredUserName: '',
   enteredPassword: '',
-  userName: 'admin',
-  password: '12345',
   hasErrorMes: false,
 };
 

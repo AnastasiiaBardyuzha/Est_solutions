@@ -12,12 +12,9 @@ import { State } from '../../redux/store';
 import './Login.css';
 
 interface StateProps {
-  isLogged: boolean;
   hasErrorMes: boolean;
   enteredUserName: string;
   enteredPassword: string | number;
-  userName: string;
-  password: string | number;
 }
 
 interface Methods {
@@ -33,8 +30,6 @@ export const LoginTemplate: FC<Props> = ({
   enteredUserName,
   enteredPassword,
   hasErrorMes,
-  userName,
-  password,
   changeIsLogged,
   changeErrorMes,
   handledUserName,
@@ -55,7 +50,7 @@ export const LoginTemplate: FC<Props> = ({
   const chackedLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (password === enteredPassword && userName === enteredUserName) {
+    if (enteredPassword === '12345' && enteredUserName === 'admin') {
       changeIsLogged(true);
     } else {
       changeErrorMes(true);
@@ -111,12 +106,9 @@ export const LoginTemplate: FC<Props> = ({
 };
 
 const mapStateToProps = (state: State) => ({
-  isLogged: state.isLogged,
   hasErrorMes: state.hasErrorMes,
   enteredUserName: state.enteredUserName,
   enteredPassword: state.enteredPassword,
-  userName: state.userName,
-  password: state.password,
 });
 
 const mapDispatchToProps = {

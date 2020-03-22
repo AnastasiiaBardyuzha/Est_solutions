@@ -15,15 +15,16 @@ export const Nav: FC = () => (
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to="/login" className="nav-link">
-            Login
-        </NavLink>
-      </li>
-      <li className="nav-item">
         <NavLink to="/profile" className="nav-link">
             Profile
         </NavLink>
       </li>
+      <li className="nav-item">
+        <NavLink to="/login" className="nav-link">
+            Login
+        </NavLink>
+      </li>
+      <button type="button" className="btn btn-outline-primary">Sign Out</button>
     </ul>
   </nav>
 );
