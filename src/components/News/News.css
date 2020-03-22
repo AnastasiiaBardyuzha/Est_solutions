@@ -1,0 +1,13 @@
+.card-size {
+    width: 250px;
+}
+
+.card-text {
+    margin-bottom: 65px;
+}
+
+.btn-position {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+}

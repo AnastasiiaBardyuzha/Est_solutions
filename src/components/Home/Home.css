@@ -1,0 +1,10 @@
+.home_wrapper {
+    /* height: 1000px; */
+    max-width: 1400px;
+}
+
+.home_img {
+     width: 100%;
+   
+    object-fit: cover;
+}

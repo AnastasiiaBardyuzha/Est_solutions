@@ -1,0 +1,28 @@
+.news_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    grid-gap: 50px;
+    justify-content: center;
+    padding: 30px;
+}
+
+@media screen and (max-width: 1250px) {
+    .news_wrapper {
+      grid-template-columns: repeat(3, minmax(250px,1fr));
+
+    }
+  }
+
+@media screen and (max-width: 899px) {
+    .news_wrapper {
+      grid-template-columns: repeat(2, minmax(250px,1fr));
+      justify-items: center;
+    }
+  }
+  
+  @media screen and (max-width: 599px) {
+    .news_wrapper {
+      grid-template-columns: minmax(250px,1fr);
+
+    }
+  }

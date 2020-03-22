@@ -1,0 +1,9 @@
+.profile_wrapper {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.profile_title {
+    text-align: center;
+    font-size: 15px;
+}
