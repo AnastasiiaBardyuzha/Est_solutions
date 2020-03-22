@@ -6,6 +6,7 @@ import {
   SET_USER_NAME,
   SET_PASSWORD,
   SET_IS_LOGGED,
+  SET_ERROR_MES,
 } from './constants';
 import { Article } from '../types';
 
@@ -16,7 +17,8 @@ export interface State {
   enteredUserName: string;
   enteredPassword: string | number;
   userName: string;
-  password: string | number;
+  password: string;
+  hasErrorMes: boolean;
 }
 
 const initialState = {
@@ -26,7 +28,8 @@ const initialState = {
   enteredUserName: '',
   enteredPassword: '',
   userName: 'admin',
-  password: 12345,
+  password: '12345',
+  hasErrorMes: false,
 };
 
 export const reduser = (state = initialState, action: AnyAction) => {
@@ -59,6 +62,12 @@ export const reduser = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         isLogged: action.isLogged,
+      };
+
+    case SET_ERROR_MES:
+      return {
+        ...state,
+        hasErrorMes: action.hasErrorMes,
       };
 
     default:

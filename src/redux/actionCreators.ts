@@ -5,6 +5,7 @@ import {
   SET_USER_NAME,
   SET_PASSWORD,
   SET_IS_LOGGED,
+  SET_ERROR_MES,
 } from './constants';
 import { Article } from '../types';
 import { getData, API_NEWS } from '../api_helpers';
@@ -32,6 +33,11 @@ export const setUserPassword = (password: string | number) => ({
 export const setIsLogged = (status: boolean) => ({
   type: SET_IS_LOGGED,
   isLogged: status,
+});
+
+export const setHasErrorMes = (status: boolean) => ({
+  type: SET_ERROR_MES,
+  hasErrorMes: status,
 });
 
 export const showedNews = () => (dispatch: Dispatch) => {

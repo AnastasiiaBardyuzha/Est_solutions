@@ -1,0 +1,13 @@
+.error_wrapper {
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.alert_btn {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+}

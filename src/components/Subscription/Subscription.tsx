@@ -27,8 +27,8 @@ export const SubscriptionTemplate: FC<Props> = ({ isLogged }) => (
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/news" exact component={NewsList} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/profile" exact render={() => (isLogged ? Profile : <Redirect to="/login" />)} />
+          <Route path="/login" exact render={() => (!isLogged ? <Login /> : <Redirect to="/profile" />)} />
+          <Route path="/profile" exact render={() => (isLogged ? <Profile /> : <Redirect to="/login" />)} />
         </Switch>
       </main>
     </Router>
