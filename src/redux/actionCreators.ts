@@ -22,12 +22,12 @@ export const setHasError = (status: boolean) => ({
 
 export const setUserName = (name: string) => ({
   type: SET_USER_NAME,
-  enteredUserName: name,
+  userName: name,
 });
 
-export const setUserPassword = (password: string | number) => ({
+export const setPassword = (password: string | number) => ({
   type: SET_PASSWORD,
-  enteredPassword: password,
+  password,
 });
 
 export const setIsLogged = (status: boolean) => ({
@@ -40,7 +40,8 @@ export const setHasErrorMes = (status: boolean) => ({
   hasErrorMes: status,
 });
 
-export const showedNews = () => (dispatch: Dispatch) => {
+
+export const showNews = () => async (dispatch: Dispatch) => {
   const getNews = () => {
     return getData(`${API_NEWS}`);
   };
@@ -51,5 +52,10 @@ export const showedNews = () => (dispatch: Dispatch) => {
     const { articles } = data;
 
     dispatch(setNews(articles));
-  });
+  })
+    .catch(error => {
+      console.log(error);
+
+      dispatch(setHasError(true));
+    });
 };

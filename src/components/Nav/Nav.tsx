@@ -1,7 +1,13 @@
 import React, { FC } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { State } from '../../redux/store';
 
-export const Nav: FC = () => (
+interface StateProps {
+  isLogged: boolean;
+}
+
+export const NavTemplate: FC<StateProps> = ({ isLogged }) => (
   <nav>
     <ul className="nav nav-pills nav-fill">
       <li className="nav-item">
@@ -19,12 +25,23 @@ export const Nav: FC = () => (
             Profile
         </NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink to="/login" className="nav-link">
-            Login
-        </NavLink>
-      </li>
-      <button type="button" className="btn btn-outline-primary">Sign Out</button>
+      {
+        !isLogged && (
+          <li className="nav-item">
+            <NavLink to="/login" className="nav-link">
+                Login
+            </NavLink>
+          </li>
+        )
+      }
     </ul>
   </nav>
 );
+
+const mapStateToProps = (state: State) => ({
+  isLogged: state.isLogged,
+});
+
+export const Nav = connect(
+  mapStateToProps,
+)(NavTemplate);

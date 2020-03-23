@@ -13,20 +13,18 @@ import { Article } from '../types';
 export interface State {
   isLogged: boolean;
   hasError: boolean;
-  newsList: Article[] | [];
-  enteredUserName: string;
-  enteredPassword: string | number;
+  newsList: Article[];
   userName: string;
-  password: string;
+  password: string | number;
   hasErrorMes: boolean;
 }
 
 const initialState = {
   isLogged: false,
-  hasError: true,
+  hasError: false,
   newsList: [],
-  enteredUserName: '',
-  enteredPassword: '',
+  userName: '',
+  password: '',
   hasErrorMes: false,
 };
 
@@ -47,13 +45,13 @@ export const reduser = (state = initialState, action: AnyAction) => {
     case SET_USER_NAME:
       return {
         ...state,
-        enteredUserName: action.enteredUserName,
+        userName: action.userName,
       };
 
     case SET_PASSWORD:
       return {
         ...state,
-        enteredPassword: action.enteredPassword,
+        password: action.password,
       };
 
     case SET_IS_LOGGED:

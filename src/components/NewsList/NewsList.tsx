@@ -1,26 +1,29 @@
-import React, { FC, useState, useEffect } from 'react';
-import { API_NEWS, getData } from '../../api_helpers';
+import React, { FC, useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import { News } from '../News/News';
+import { Page404 } from '../Page404/Page404';
 import { Article } from '../../types';
+import { State } from '../../redux/store';
+import { showNews as loadNews } from '../../redux/actionCreators';
 import './NewsList.css';
 
+interface StateProps {
+  newsList: Article[];
+  hasError: boolean;
+  showNews: () => void;
+}
 
-export const NewsList: FC = () => {
-  const [newsList, setNewsList] = useState<Article[]>([]);
+type Props = StateProps;
 
+export const NewsListTemp: FC<Props> = ({ showNews, newsList, hasError }) => {
   useEffect(() => {
-    const getNews = () => {
-      return getData(`${API_NEWS}`);
-    };
-
-    const currentNews = getNews();
-
-    currentNews.then(data => {
-      const { articles } = data;
-
-      setNewsList(articles);
-    });
+    showNews();
   }, []);
+
+  if (hasError) {
+    return <Page404 />;
+  }
 
   return (
     <div className="news_wrapper">
@@ -28,3 +31,18 @@ export const NewsList: FC = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  newsList: state.newsList,
+  hasError: state.hasError,
+});
+
+const mapDispatchToProps = {
+  showNews: loadNews,
+};
+
+
+export const NewsList = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NewsListTemp);

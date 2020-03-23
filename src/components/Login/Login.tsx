@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import {
   setUserName,
-  setUserPassword,
+  setPassword,
   setIsLogged,
   setHasErrorMes,
 } from '../../redux/actionCreators';
@@ -13,45 +13,47 @@ import './Login.css';
 
 interface StateProps {
   hasErrorMes: boolean;
-  enteredUserName: string;
-  enteredPassword: string | number;
+  userName: string;
+  password: string | number;
 }
 
 interface Methods {
   changeIsLogged: (status: boolean) => void;
   changeErrorMes: (status: boolean) => void;
-  handledUserName: (name: string) => void;
-  handledPasswrd: (password: string | number) => void;
+  handleUserName: (name: string) => void;
+  handlePasswrd: (password: string | number) => void;
 }
 
 type Props = StateProps & Methods;
 
 export const LoginTemplate: FC<Props> = ({
-  enteredUserName,
-  enteredPassword,
+  userName,
+  password,
   hasErrorMes,
   changeIsLogged,
   changeErrorMes,
-  handledUserName,
-  handledPasswrd,
+  handleUserName,
+  handlePasswrd,
 }) => {
   const handleChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: name } = event.target;
 
-    handledUserName(name.replace(/\s/, ''));
+    handleUserName(name.replace(/\s/, ''));
   };
 
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: pas } = event.target;
 
-    handledPasswrd(pas.replace(/\s/, ''));
+    handlePasswrd(pas.replace(/\s/, ''));
   };
 
   const chackedLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (enteredPassword === '12345' && enteredUserName === 'admin') {
+    if (password === '12345' && userName === 'admin') {
       changeIsLogged(true);
+      handleUserName('');
+      handlePasswrd('');
     } else {
       changeErrorMes(true);
     }
@@ -75,7 +77,7 @@ export const LoginTemplate: FC<Props> = ({
               id="inputUserName"
               className="form-control"
               required
-              value={enteredUserName}
+              value={userName}
               onChange={handleChangeLogin}
             />
           </label>
@@ -89,7 +91,7 @@ export const LoginTemplate: FC<Props> = ({
               id="inputPassword"
               className="form-control"
               required
-              value={enteredPassword}
+              value={password}
               onChange={handleChangePassword}
             />
           </label>
@@ -107,14 +109,14 @@ export const LoginTemplate: FC<Props> = ({
 
 const mapStateToProps = (state: State) => ({
   hasErrorMes: state.hasErrorMes,
-  enteredUserName: state.enteredUserName,
-  enteredPassword: state.enteredPassword,
+  userName: state.userName,
+  password: state.password,
 });
 
 const mapDispatchToProps = {
   changeIsLogged: setIsLogged,
-  handledUserName: setUserName,
-  handledPasswrd: setUserPassword,
+  handleUserName: setUserName,
+  handlePasswrd: setPassword,
   changeErrorMes: setHasErrorMes,
 };
 

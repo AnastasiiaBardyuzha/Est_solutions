@@ -20,7 +20,7 @@ export const News: FC<Props> = ({ news }) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
-        <a href={url} className="btn btn-primary btn-position">Go somewhere</a>
+        <a href={url} className="btn btn-primary btn-position">Go to read</a>
       </div>
     </div>
   );
