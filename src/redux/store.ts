@@ -15,7 +15,7 @@ export interface State {
   hasError: boolean;
   newsList: Article[];
   userName: string;
-  password: string | number;
+  password: string;
   hasErrorMes: boolean;
 }
 

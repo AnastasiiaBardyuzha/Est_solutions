@@ -54,7 +54,7 @@ export const showNews = () => async (dispatch: Dispatch) => {
     dispatch(setNews(articles));
   })
     .catch(error => {
-      console.log(error);
+      console.warn(error);
 
       dispatch(setHasError(true));
     });

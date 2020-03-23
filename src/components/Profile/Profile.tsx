@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
+
 import './Profile.css';
 import { State } from '../../redux/store';
 import { setIsLogged } from '../../redux/actionCreators';

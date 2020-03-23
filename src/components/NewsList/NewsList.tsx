@@ -5,20 +5,20 @@ import { News } from '../News/News';
 import { Page404 } from '../Page404/Page404';
 import { Article } from '../../types';
 import { State } from '../../redux/store';
-import { showNews as loadNews } from '../../redux/actionCreators';
+import { showNews } from '../../redux/actionCreators';
 import './NewsList.css';
 
 interface StateProps {
   newsList: Article[];
   hasError: boolean;
-  showNews: () => void;
+  loadNews: () => void;
 }
 
 type Props = StateProps;
 
-export const NewsListTemp: FC<Props> = ({ showNews, newsList, hasError }) => {
+export const NewsListTemp: FC<Props> = ({ loadNews, newsList, hasError }) => {
   useEffect(() => {
-    showNews();
+    loadNews();
   }, []);
 
   if (hasError) {
@@ -38,7 +38,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = {
-  showNews: loadNews,
+  loadNews: showNews,
 };
 
 

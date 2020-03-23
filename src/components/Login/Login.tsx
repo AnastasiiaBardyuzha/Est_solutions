@@ -14,7 +14,7 @@ import './Login.css';
 interface StateProps {
   hasErrorMes: boolean;
   userName: string;
-  password: string | number;
+  password: string;
 }
 
 interface Methods {

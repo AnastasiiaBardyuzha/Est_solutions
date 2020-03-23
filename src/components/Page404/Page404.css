@@ -13,7 +13,7 @@
     transform: translateY(-50%);
 }
   
-.title_404 {
+.page404_title {
     color: #fff;
     font-family: 'Hind Guntur', sans-serif;
     font-size: 100px;
@@ -23,7 +23,7 @@
     display: inline-block;
 }
   
-.text_404 {
+.page404_text {
     color: #fff;
     font-family: 'Hind Guntur', sans-serif;
     font-size: 15px;

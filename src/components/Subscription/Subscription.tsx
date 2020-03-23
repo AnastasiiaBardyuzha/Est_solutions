@@ -6,6 +6,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+
 import { Nav } from '../Nav/Nav';
 import { Home } from '../Home/Home';
 import { NewsList } from '../NewsList/NewsList';

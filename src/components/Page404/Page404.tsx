@@ -1,6 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import './Page404.css';
 
 export const Page404: FC = () => {
@@ -9,13 +9,13 @@ export const Page404: FC = () => {
   return (
     <div className="page404_wrapper">
       <div className="page404_content">
-        <span className="title_404">
+        <span className="page404_title">
           404. Page Not Found.
         </span>
-        <div className="text_404">
+        <div className="page404_text">
           <span>
-            There's a lot of reasons why this page is 404.
-             Don't waste your time enjoying the look of it.
+            There is a lot of reasons why this page is 404.
+             Do not waste your time enjoying the look of it.
           </span>
           <br />
           <span>
