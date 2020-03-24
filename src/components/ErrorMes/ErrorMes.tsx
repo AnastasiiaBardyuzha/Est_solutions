@@ -17,7 +17,7 @@ export const ErrorMesTemp: FC<Methods> = ({ changeErrorMes }) => (
           className="btn btn-primary"
           onClick={() => changeErrorMes(false)}
         >
-            Ок
+            ОK
         </button>
       </div>
     </div>
