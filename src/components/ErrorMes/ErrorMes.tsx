@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import { setHasErrorMes } from '../../redux/actionCreators';
-
 import './ErrorMes.css';
 
 interface Methods {
@@ -23,7 +22,6 @@ export const ErrorMesTemp: FC<Methods> = ({ changeErrorMes }) => (
       </div>
     </div>
   </div>
-
 );
 
 

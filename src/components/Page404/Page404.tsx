@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import './Page404.css';
 
 export const Page404: FC = () => {

@@ -7,7 +7,7 @@ import {
   SET_IS_LOGGED,
   SET_ERROR_MES,
 } from './constants';
-import { Article } from '../types';
+import { Article } from '../lib/types';
 import { getData, API_NEWS } from '../api_helpers';
 
 export const setNews = (currentNews: Article[]) => ({
@@ -41,7 +41,9 @@ export const setHasErrorMes = (status: boolean) => ({
 });
 
 
-export const showNews = () => async (dispatch: Dispatch) => {
+export const showNews = () => (dispatch: Dispatch) => {
+  dispatch(setHasError(false));
+
   const getNews = () => {
     return getData(`${API_NEWS}`);
   };
@@ -54,8 +56,6 @@ export const showNews = () => async (dispatch: Dispatch) => {
     dispatch(setNews(articles));
   })
     .catch(error => {
-      console.warn(error);
-
-      dispatch(setHasError(true));
+      dispatch(setHasError(error));
     });
 };

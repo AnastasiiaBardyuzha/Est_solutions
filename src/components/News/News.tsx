@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Article } from '../../types';
+import { Article } from '../../lib/types';
 import './News.css';
 
 interface Props {

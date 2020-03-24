@@ -6,7 +6,6 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-
 import { Nav } from '../Nav/Nav';
 import { Home } from '../Home/Home';
 import { NewsList } from '../NewsList/NewsList';
@@ -27,7 +26,7 @@ export const SubscriptionTemplate: FC<StateProps> = ({ isLogged, changeIsLogged 
     if (data) {
       changeIsLogged(JSON.parse(data));
     }
-  }, []);
+  }, [changeIsLogged]);
 
   useEffect(() => {
     localStorage.setItem('isLogged', JSON.stringify(isLogged));
@@ -57,7 +56,6 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = {
   changeIsLogged: setIsLogged,
 };
-
 
 export const Subscription = connect(
   mapStateToProps,

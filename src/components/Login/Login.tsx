@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { connect } from 'react-redux';
 import {
   setUserName,
@@ -6,9 +6,10 @@ import {
   setIsLogged,
   setHasErrorMes,
 } from '../../redux/actionCreators';
+import { passRegExp, loginRex } from '../../lib/constants';
+import { validation } from '../../lib/helpers';
 import { ErrorMes } from '../ErrorMes/ErrorMes';
 import { State } from '../../redux/store';
-
 import './Login.css';
 
 interface StateProps {
@@ -21,7 +22,7 @@ interface Methods {
   changeIsLogged: (status: boolean) => void;
   changeErrorMes: (status: boolean) => void;
   handleUserName: (name: string) => void;
-  handlePasswrd: (password: string | number) => void;
+  handlePasswrd: (password: string) => void;
 }
 
 type Props = StateProps & Methods;
@@ -35,15 +36,20 @@ export const LoginTemplate: FC<Props> = ({
   handleUserName,
   handlePasswrd,
 }) => {
+  const [userError, setUserError] = useState(false);
+  const [passError, setPassError] = useState(false);
+
   const handleChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: name } = event.target;
 
+    setUserError(false);
     handleUserName(name.replace(/\s/, ''));
   };
 
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: pas } = event.target;
 
+    setPassError(false);
     handlePasswrd(pas.replace(/\s/, ''));
   };
 
@@ -64,46 +70,61 @@ export const LoginTemplate: FC<Props> = ({
   }
 
   return (
-    <>
-      <div className="login_wrapper">
-        <form onSubmit={chackedLogin}>
-          <label
-            htmlFor="inputUserName"
-            className="col-form-label input-size"
-          >
-            Username
-            <input
-              type="text"
-              id="inputUserName"
-              className="form-control"
-              required
-              value={userName}
-              onChange={handleChangeLogin}
-            />
-          </label>
-          <label
-            htmlFor="inputPassword"
-            className="col-form-label input-size"
-          >
-            Password
-            <input
-              type="password"
-              id="inputPassword"
-              className="form-control"
-              required
-              value={password}
-              onChange={handleChangePassword}
-            />
-          </label>
-          <button
-            type="submit"
-            className="btn btn-primary btn_form"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-    </>
+    <div className="login_wrapper">
+      <form onSubmit={chackedLogin}>
+        <label
+          htmlFor="inputUserName"
+          className="col-form-label input-size"
+        >
+          Username
+          <input
+            type="text"
+            id="inputUserName"
+            className="form-control"
+            required
+            value={userName}
+            onChange={handleChangeLogin}
+            onBlur={() => {
+              validation(loginRex, userName, setUserError);
+            }}
+          />
+        </label>
+        <div className={`valid_user ${!userError ? 'hidden' : ''}`}>
+          <span>
+            Characters: letters of any case, numbers and  _. Length: 3 - 10
+          </span>
+        </div>
+        <label
+          htmlFor="inputPassword"
+          className="col-form-label input-size"
+        >
+          Password
+          <input
+            type="password"
+            id="inputPassword"
+            className="form-control"
+            required
+            value={password}
+            onBlur={() => {
+              validation(passRegExp, password, setPassError);
+            }}
+            onChange={handleChangePassword}
+          />
+        </label>
+        <div className={`valid_pass ${!passError ? 'hidden' : ''}`}>
+          <span>
+            Characters: letters of any case, numbers and special characters.
+              Length: 3 - 12
+          </span>
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary btn_form"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 

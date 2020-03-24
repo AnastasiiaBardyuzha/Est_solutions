@@ -1,6 +1,11 @@
-import { createStore, AnyAction, applyMiddleware } from 'redux';
+import {
+  createStore,
+  AnyAction,
+  applyMiddleware,
+} from 'redux';
 import thunk from 'redux-thunk';
 import {
+  initialState,
   SET_NEWS,
   SET_HAS_ERROR,
   SET_USER_NAME,
@@ -8,7 +13,7 @@ import {
   SET_IS_LOGGED,
   SET_ERROR_MES,
 } from './constants';
-import { Article } from '../types';
+import { Article } from '../lib/types';
 
 export interface State {
   isLogged: boolean;
@@ -18,15 +23,6 @@ export interface State {
   password: string;
   hasErrorMes: boolean;
 }
-
-const initialState = {
-  isLogged: false,
-  hasError: false,
-  newsList: [],
-  userName: '',
-  password: '',
-  hasErrorMes: false,
-};
 
 export const reduser = (state = initialState, action: AnyAction) => {
   switch (action.type) {

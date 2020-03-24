@@ -1,9 +1,8 @@
 import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
-
 import { News } from '../News/News';
 import { Page404 } from '../Page404/Page404';
-import { Article } from '../../types';
+import { Article } from '../../lib/types';
 import { State } from '../../redux/store';
 import { showNews } from '../../redux/actionCreators';
 import './NewsList.css';
@@ -14,12 +13,10 @@ interface StateProps {
   loadNews: () => void;
 }
 
-type Props = StateProps;
-
-export const NewsListTemp: FC<Props> = ({ loadNews, newsList, hasError }) => {
+export const NewsListTemp: FC<StateProps> = ({ loadNews, newsList, hasError }) => {
   useEffect(() => {
     loadNews();
-  }, []);
+  }, [loadNews]);
 
   if (hasError) {
     return <Page404 />;
@@ -40,7 +37,6 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = {
   loadNews: showNews,
 };
-
 
 export const NewsList = connect(
   mapStateToProps,

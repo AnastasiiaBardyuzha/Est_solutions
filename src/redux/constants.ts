@@ -1,3 +1,12 @@
+export const initialState = {
+  isLogged: false,
+  hasError: false,
+  newsList: [],
+  userName: '',
+  password: '',
+  hasErrorMes: false,
+};
+
 export const SET_NEWS = 'SET_NEWS';
 export const SET_HAS_ERROR = 'SET_HAS_ERROR';
 export const SET_USER_NAME = 'SET_USER_NAME';

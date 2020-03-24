@@ -10,3 +10,13 @@
 .btn_form {
     margin-top: 10px;
 }
+
+.valid_pass,
+.valid_user {
+    color: #ff0000;
+    font-size: 12px;
+}
+
+.hidden {
+    opacity: 0;
+}
