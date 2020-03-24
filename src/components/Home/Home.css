@@ -1,0 +1,8 @@
+.home_wrapper {
+    max-width: 1400px;
+}
+
+.home_img {
+    width: 100%;
+    object-fit: cover;
+}

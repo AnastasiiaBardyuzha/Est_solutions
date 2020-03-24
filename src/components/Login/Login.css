@@ -1,0 +1,22 @@
+.login_wrapper {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.input-size {
+    width: 100%;
+}
+
+.btn_form {
+    margin-top: 10px;
+}
+
+.valid_pass,
+.valid_user {
+    color: #ff0000;
+    font-size: 12px;
+}
+
+.hidden {
+    opacity: 0;
+}
